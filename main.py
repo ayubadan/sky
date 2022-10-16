@@ -4,7 +4,7 @@ from collections import namedtuple
 #Q1a
 def cal_square_root(numb):
     start = numb
-    if start != 0:
+    if start > 0:
         base10 = int(math.log10(start))
         if base10 == 0:
             approx_root = 1
