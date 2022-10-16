@@ -4,26 +4,31 @@ from collections import namedtuple
 #Q1a
 def cal_square_root(numb):
     start = numb
-    base10 = int(math.log10(start))
-    if base10 == 0:
-        approx_root = 1
-    else:
-        approx_root = (10**base10)/10
-
-    n = 0
-    while n < start:
-        n = approx_root**2
-        approx_root = approx_root + 1
-    
-    quotient = start / approx_root
-    mean = (approx_root + quotient)/2
-
-    while round(quotient,6) != round(approx_root,6):
-        approx_root = mean
+    if start != 0:
+        base10 = int(math.log10(start))
+        if base10 == 0:
+            approx_root = 1
+        else:
+            approx_root = (10**base10)/10
+        n = 0
+        while n < start:
+            n = approx_root**2
+            approx_root += 1
+        
         quotient = start / approx_root
         mean = (approx_root + quotient)/2
-    
-    return approx_root
+
+        while round(quotient,6) != round(approx_root,6):
+            approx_root = mean
+            quotient = start / approx_root
+            mean = (approx_root + quotient)/2
+        
+        return approx_root
+    else:
+        approx_root = 0
+        return approx_root
+
+print('Question 1a',cal_square_root(159))
 
 # Q1b / Q1c
 arr_tup = []
@@ -51,5 +56,5 @@ class SquareRoot:
         
         
 # Q2b
-my_class = SquareRoot(8999).calculate_square_root()
+my_class = SquareRoot(159).calculate_square_root()
 print('Qestion 2b', my_class)
